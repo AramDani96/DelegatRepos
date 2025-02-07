@@ -44,10 +44,24 @@ namespace DelegatLessons
 
             int num = GetOperation()(2, 3);
             Console.WriteLine(num);
+
+            int inter = 5;
+
+            Func<int> chengeNumber = () =>
+            {
+                inter += 5;
+                return inter;
+            };
+
+            GenericDelegate<int> genericDelegate = delegate (int value) { return value+=10; };
+            GenericDelegate<string> genericDelegate1 = delegate (string value) { return value +="abs"; };
+
         }
         public delegate void MyDelegate(int number);
 
         public delegate int SumDelegate(int Number1, int Number2);
+
+        public delegate T GenericDelegate<T>(T value);
         static void PrintNumber(int number)
         { 
           Console.WriteLine(number);
@@ -70,5 +84,7 @@ namespace DelegatLessons
         {
             return (num1,num2) => num1 * num2;
         }
+
+        //12
     }
 }
